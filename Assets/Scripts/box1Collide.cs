@@ -6,27 +6,22 @@ using UnityEngine.UI;
 public class box1Collide : MonoBehaviour
 {
     public Text countText;
-
-    private float m1, m2, v1, v2;
-
-    private int count;
+    public int count;
 
     private void Start()
     {
-        m1 = 1;
-        v1 = 0;
         count = 0;
     }
 
-    private void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        gameObject.transform.Translate(new Vector3(v1, 0, 0) * Time.deltaTime);
+        count++;
+        countText.text = "# Collisions: " + count.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        if (collision.name == "box2")
+        /*if (collision.name == "box2")
         {
             m2 = box2Collide.instance.m2;
             v2 = box2Collide.instance.v2;
@@ -42,6 +37,6 @@ public class box1Collide : MonoBehaviour
         {
             count++;
             countText.text = "# Collisions: " + count.ToString();
-        }
+        }*/
     }
 }

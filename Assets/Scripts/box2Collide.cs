@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class box2Collide : MonoBehaviour
 {
-    public static box2Collide instance;
+    Rigidbody2D rb;
 
-    public float m2, v2;
+    public float startSpeed;
 
-    private void Awake()
+    private void Start()
     {
-        m2 = 10000;
-        v2 = -1f;
-        if (instance == null)
-            instance = this;
+        rb = GetComponent<Rigidbody2D>();
+        rb.AddForce(new Vector2(startSpeed, 0));
+        
     }
 
     private void Update()
     {
-        gameObject.transform.Translate(new Vector3(v2, 0, 0) * Time.deltaTime);
+        
+        //gameObject.transform.Translate(new Vector3(v2, 0, 0) * Time.deltaTime);
     }
 }
